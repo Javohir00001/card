@@ -144,7 +144,8 @@ html {
     max-width: 90%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 .card__icon {
     width: 14px;
