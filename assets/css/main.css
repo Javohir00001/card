@@ -45,14 +45,11 @@ html {
     font-weight: 400;
 
 }
-.container {
-    max-width: 1024px;
-    margin: 0 auto;
-}
 .card {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-direction: column;
     background-color: #FFFFFF;
     -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -60,16 +57,49 @@ html {
     margin-top: 37px;
 }
 
+@media (min-width: 991px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
 .card__img {
-    width: 45%;
+    flex-grow: 1;
+    --w: 45%;
+    max-width: 100%;
+    height: calc(var(--w) / 4 *3 );
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    background-size: cover;
-    background-position: center center;
+}
+.card__img img {
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+@media (min-width: 991px) {
+    .card__img {
+        max-width: var(--w);
+    }    
+    .card__img img {
+        border-radius: 8px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;   
+    }
+
 }
 .card__body {
-    max-width: 55%;
-    padding: 16px 32px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 16px;
+    max-width: 100%;
+}
+@media (min-width: 991px) {
+    .card__body {
+        max-width: 55%; 
+        padding: 16px 32px;
+    }    
 }
 .card__title {
     padding: 8px 0;
@@ -92,8 +122,15 @@ html {
     line-height: 36px;
     font-weight: 700;
 }
-.card__text {
-    max-width: 424px;
+@media (min-width: 991px) and (max-width: 1200px) {
+    .card__text {
+        max-width: 424px;
+    }
+}
+@media (min-width: 1200px) {
+    .card__text {
+        max-width: fit-content;
+    }
 }
 .card__price {
     white-space: nowrap;
@@ -118,17 +155,17 @@ html {
 .card__tegs li::after {
     content: "";
     position: absolute;
-    right: -17px;
+    left: -17px;
     top: 50%;
-    -webkit-transform: translate(50%, -50%);
-        -ms-transform: translate(50%, -50%);
-            transform: translate(50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #BFC5CE;
 }
-.card__tegs li:last-of-type::after {
+.card__tegs li:first-of-type::after {
     display: none;
 }
 .card__footer {
